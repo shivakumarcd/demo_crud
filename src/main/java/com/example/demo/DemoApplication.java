@@ -10,5 +10,4 @@ public class DemoApplication {
 		System.out.println("In main");
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	//Checking 2nd manual commit
 }
