@@ -19,6 +19,7 @@ class DemoApplicationTests {
 
 	@Test
 	void helloEndpointReturnsGreeting() throws Exception {
+		System.out.println("Running 1st sample test");
 		mockMvc.perform(get("/hello"))
 				.andExpect(status().isOk())
 				.andExpect(content().string("Hello, World!"));
