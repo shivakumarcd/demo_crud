@@ -26,3 +26,4 @@ class DemoApplicationTests {
 	}
 
 }
+checking mergestop rule
