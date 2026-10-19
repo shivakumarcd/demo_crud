@@ -11,3 +11,7 @@ public class HelloController {
 		return "Hello, World!";
 	}
 }
+
+testing what happens to test action when compile errors present
+Also manual run of git action
+
