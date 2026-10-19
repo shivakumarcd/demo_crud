@@ -1,4 +1,4 @@
-name: Tests
+name: MyTestName
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  my_test_id:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,5 +19,5 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: gradle
-      - name: Run tests
+      - name: Running tests 123445
         run: ./gradlew test --no-daemon
