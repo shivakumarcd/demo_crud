@@ -12,6 +12,3 @@ public class HelloController {
 	}
 }
 
-testing what happens to test action when compile errors present
-Also manual run of git action
-
