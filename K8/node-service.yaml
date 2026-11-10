@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-service-name
+spec:
+  type: NodePort
+  selector:
+    app: spring-label-value   # finds pods with this label (from Deployment (B))
+  ports:
+    - port: 82          # port of the Service inside the cluster
+      targetPort: 8080      # port your Spring app listens on in the pod
+      nodePort: 30080      # port on each node (matches kind-config.yaml)

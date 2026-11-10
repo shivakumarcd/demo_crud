@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1      # API version for Ingress
+kind: Ingress                         # Defines HTTP/HTTPS routing rules
+metadata:                             # Resource metadata
+  name: spring-ingress                # Name of this Ingress resource
+spec:                                 # Ingress specification
+  ingressClassName: my-traefik        # earlier was NGINX Ingress Controller processes these rules
+  rules:                              # List of routing rules
+    - host: localhost                 # Match requests for example.com
+      http:                           # HTTP routing configuration
+        paths:                        # URL paths to match
+          - path: /hello                   # Match URLs starting with /api
+            pathType: Prefix          # Matches /api and /api/users, not /apix
+            backend:                  # Destination for matching requests
+              service:                # Forward to a Kubernetes Service
+                name: spring-service-name    # Your Spring Boot Service name
+                port:                 # Destination Service port
+                  number: 8080        # Spring Service port (not necessarily Pod port)

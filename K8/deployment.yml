@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment-name          # name of this Deployment object
+spec:
+  replicas: 2                           # the 2 pods you wanted
+  selector:
+    matchLabels:
+      app: spring-label-value           # (A) "manage pods that have this label"
+  template:                             # blueprint for each pod
+    metadata:
+      labels:
+        app: spring-label-value         # (B) must match (A), or K8s rejects it
+    spec:
+      containers:
+        - name: spring-container-name   # name of the container inside the pod
+          image: shivakumardwd/demo_app_img_name_on_hub:v2
+          ports:
+            - containerPort: 8080       # port your Spring app listens on
