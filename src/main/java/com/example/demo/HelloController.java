@@ -10,7 +10,7 @@ public class HelloController {
 	public String hello() {
 		//below to be replaced by loggers statements
 		System.out.println("test sout log -- -before return- version ");
-		System.out.println("---------Nov-8:1700 testing DOCKER HUB image pull test");
+		System.out.println("---------Nov-10:1800 testing agro CD");
 
 		return "Hello, World!";
 	}
