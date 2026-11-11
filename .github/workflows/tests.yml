@@ -41,3 +41,24 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/demo_app_img_name_on_hub:${{ github.sha }}
+
+  update-config:
+    needs: img-build-push            # only after the image is pushed
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout config repo
+        uses: actions/checkout@v4
+        with:
+          repository: shivakumarcd/K8s_for_demo
+          token: ${{ secrets.K8_CONFIG_REPO_TOKEN }}
+
+      - name: Update image tag
+        run: |
+          sed -i "s|image: .*demo_app_img_name_on_hub:.*|image: shivakumardwd/demo_app_img_name_on_hub:${{ github.sha }}|" app/deployment.yaml
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git commit -am "Update image to ${{ github.sha }}" && git push)
