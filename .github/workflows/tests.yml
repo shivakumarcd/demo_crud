@@ -55,7 +55,7 @@ jobs:
 
       - name: Update image tag
         run: |
-          sed -i "s|image: .*demo_app_img_name_on_hub:.*|image: shivakumardwd/demo_app_img_name_on_hub:${{ github.sha }}|" app/deployment.yaml
+          sed -i "s|image: .*demo_app_img_name_on_hub:.*|image: shivakumardwd/demo_app_img_name_on_hub:${{ github.sha }}|" app/deployment.yml
 
       - name: Commit and push
         run: |
